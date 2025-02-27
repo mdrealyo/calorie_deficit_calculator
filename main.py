@@ -1,12 +1,33 @@
 from colorama import init, Fore, Back
-import os, time
+import os, time, random
+os.system("cls")
 
-init()
+TEXT = f"""
+  ____    _    _       ____  _____ _____ ___ ____ ___ _____ 
+ / ___|  / \  | |     |  _ \| ____|  ___|_ _/ ___|_ _|_   _|
+| |     / _ \ | |     | | | |  _| | |_   | | |    | |  | |  
+| |___ / ___ \| |___  | |_| | |___|  _|  | | |___ | |  | |  
+ \____/_/   \_\_____| |____/|_____|_|   |___\____|___| |_|  
+
+  ____    _    _     ____ _   _ _        _  _____ ___  ____  
+ / ___|  / \  | |   / ___| | | | |      / \|_   _/ _ \|  _ \\
+| |     / _ \ | |  | |   | | | | |     / _ \ | || | | | |_) |
+| |___ / ___ \| |__| |___| |_| | |___ / ___ \| || |_| |  _ <
+ \____/_/   \_\_____\____|\___/|_____/_/   \_\_| \___/|_| \_\\
+"""
+
+colors = [color_value for color_name, color_value in Fore.__dict__.items() if not color_name.startswith('_') and color_name != 'RESET']
+def DisplayRainbowText():
+    global rainbow_text
+    os.system("cls")
+    rainbow_text = ''.join(random.choice(colors) + char for char in TEXT)
+    print(rainbow_text + Fore.RESET)
+
 
 def reset():
     print(Fore.RESET)
 
-os.system("cls")
+
 
 def calculate_bmr(weight, height_feet, height_inches, age, gender):
     height_in_cm = (height_feet * 30.48) + (height_inches * 2.54)  # Convert height from feet and inches to cm
@@ -75,6 +96,15 @@ def get_valid_input(prompt, input_type, min_value=None, max_value=None):
         except ValueError:
             print(f"{Fore.RED}Invalid input. Please enter a valid {input_type.__name__}.{Fore.RESET}")
 
+time.sleep(1)
+c = 10
+while c != 0:
+    DisplayRainbowText()
+    time.sleep(0.2)
+    c -=1
+time.sleep(2)
+os.system("cls")
+
 # Example usage
 age = get_valid_input(f"Enter your {Fore.BLUE}age: {Fore.RESET}", int, 13, 80)
 os.system("cls")
@@ -103,6 +133,8 @@ print(f"{Fore.YELLOW}Your BMR is: {Fore.MAGENTA}{bmr}{Fore.RESET}")
 target_weight = get_valid_input(f"Enter your {Fore.BLUE}target weight{Fore.RESET} in pounds: {Fore.RESET}", float, 30, 300)
 os.system("cls")
 reset()
+
+
 
 generate_report(weight, target_weight, height_feet, height_inches, gender, bmr)
 print(f"{Fore.YELLOW}Report generated and saved to 'calorie_report.txt'.{Fore.RESET}")
