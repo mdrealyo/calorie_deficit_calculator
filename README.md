@@ -7,7 +7,7 @@ Daily Caloric Intake: Provides daily caloric intake recommendations to maintain 
 Weight Loss Plan: Generates a monthly plan showing how many calories you should consume daily to reach your target weight over a period of 1 to 12 months
 
 # How to Use
-Install Dependencies: Run install_dependencies.bat to install the required Python libraries.
+Install Dependencies: Run install.bat to install the required Python libraries.
 Run the Script: Execute the script in a Python environment.
 Input Your Details: The script will prompt you to enter the following details:
 Age (between 13 and 80)
